@@ -1,0 +1,68 @@
+angular
+framework para el frontend
+
+nodejs
+crear el servidor http para crear las rutas para guardar datos, actualizar y eliminar.
+
+xampp
+para mysql 
+
+*instalar cli de angular
+*instalar typescript
+
+1. crear el servidor para consumir lo que tenemos en el servidor, utilizando nodejs porque ya estamos utilizando javascript del lado
+del frontend entonces al utilizar nodejs en el backend van a tener bastantes cosas en comun. Angular tambien usa node para instalar modulos, copilar codigo y demas.
+2. servidor para restapi= rutas que vamos a tener en el servidor que angular va poder consumir 
+3. usamos typescript para importar modulos, interfaces, etc. y luego convertirlo en javascript.
+4. nuestro servidor estara conectado a una base de mysql
+5.
+
+en el frontend todo estara creado con angular.para pedir las rutas a nuestro servidor y que el le devuelva algo.
+
+empezamos 
+1. abrir proyecto en visual 
+2. creamos carpeta server
+3. abrimos terminal luego abrir con cd server
+4. instalamos package jason. npm init --yes
+5. instalar modulos que se necesitan, primero express un  modulo muy probado y asi no creo yo mismo todo desde cero, luego morgan para ver lo que las aplicaciones
+cliente nos va pidiendo, luego modulo de conexion mysql para conectar nodejs con mysql, instalamos el modulo cors para comunicar dos servidores. "npm i express morgan promise-mysql cors" 
+6. crear carpeta src 
+7. dentro de src creamos un archivo index.ts
+8. dentro de index escribimos console.log('WORKS')
+9. lo probamos con tyscript, instalamos en consola "npm install -g typescript"
+10. escribimos en terminal "tsc" luego escribimos en terminal para crear el archivo de configuracion "tsc --init"
+11. dentro de el archivo tsconfig.json cambiamos en target a "es5" a "es6" luego descomentamos el guion que dice outDir:"./",
+y le añadimos [outDir:"./build",
+12. volvemos  escribir "tsc" en terminal para comprobar va crear un archivo index.js
+13. creamos la carpeta build y metemos el archivo index.js adentro
+14. nos vamos a package.json para crear un comando que permita convertir codigo abajo de los scrpits donde esta test lo borramos y escribimos en su lugar
+> "build": "tsc -w"
+15. luego ejecutamos en terminal el comando "npm run build
+16. abrimos una nueva terminal y cd server que es donde estamos trabajando
+17. escribimos en la nueva terminal > node build/index.js Server
+lanzar el servidor build con el comando > npm run build
+18.abrimos una  nueva terminal 2 nos ubicamos en cd server
+18. instalamos el modulo > npm i nodemon -D
+19. ir al archivo package.json y abajo de build crear el comando >"dev": "nodemon build/index.js"
+20. crear una segunda consola y ejecutar npm run dev, asegurarse que estoy en dc server
+21. agregarr otro modulo en una terminal 3 abrir cd server y escribir > npm i @types/express -D
+21. luego te vas a index.ts importar express en la primera linea >import express from 'express';
+22.crear clase server >class Server {}
+23. creamos el constructor dentro de clasee express y dentro abrir express
+--seguir en el codigo la primera parte hasta start
+24.aabrir navegador en el https://localhost:3000
+25. crear carpeta routes dentro de carpeta src, dentro de esa carpeta crear el archivo IndexRoutes.ts y gamesRoutes.ts
+26. nos vamos a index ts donde estamos escribiendo codigo y importamos ver codigo
+27. nos vamos al index creado y ponemos >import{Route} from 'express'; --es un metodo para rutas seguir el codigo
+28. importamos modulos morgan y cors 
+29. en la tercera terminal ponemos > npm i @types/morgan @types/cors -D
+30.creamos carpeta database y adentro creamos el archivo database.sql que contendra la base de datos
+31. ya creada la base nos vamos a terminal 3 y nos conectamos a nuestro mysql > mysql -u root -p
+32. abro mysql command line client y escribo el query de base de datos
+33. regreo a visual y en la carpeta src y luego routes creo un archivo llamado database.ts
+34. creamos el archivo keys.ts dentro de la carpeta routes
+35. volvemos a database.ts y escribimos abajo del primer import >import keys from './keys;
+--si me da error en getConnection entones en la terminal escribir >npm i promise-mysql@3.3.1 
+36. dentro de src crear carpeta controllers
+37.dentro de controllers crear archivo indexControllers.ts
+38.crear el archivo gamesController.ts en carpeta controllers
